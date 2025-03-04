@@ -6,7 +6,6 @@
  * Simplifier l'utilisation de PDO
  */
 
-
 class Database
 {
 
@@ -44,12 +43,13 @@ class Database
         return self::$instance;
     }
 
-    public function getConnexion()
+    public function getConnection()
     {
         // Retourne l'objet PDO. Pourquoi ? Pour pouvoir faire des requêtes
         return $this->pdo;
     }
+
 }
 
 // Exemple pour appeler cette classe
-//$db = Database::getInstance()->getConnexion();
+$db = Database::getInstance()->getConnection();
