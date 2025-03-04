@@ -32,8 +32,8 @@ if (empty($produit)) {
             <td><?=$p['nom']?></td>
             <td><?=$p['prix']?> €</td>
             <td><?=$p['stock']?></td>
-            <td><a class="edit" href="edit.php?id=<?= $p['id']; ?>">Modifier</a></td>
-            <td><a class="delete" href="delete.php?id=<?= $p['id']; ?>">Supprimer</a></td>
+            <td><a class="edit" href="/views/edit.php?id=<?=$p['id'];?>">Modifier</a></td>
+            <td><a class="delete" href="index.php?action=delete&id=<?=$p['id'];?>">Supprimer</a></td>
         </tr>
     <?php endforeach; ?> <!--// Fin du foreach -->
     </tbody>

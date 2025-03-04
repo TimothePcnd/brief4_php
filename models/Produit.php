@@ -116,9 +116,12 @@ class Produit {
     }
 
     // Function Modifier un produit
-    public function modifier( string $nom, float $prix, int $stock, int $id){
-        $stmt = $this ->pdo -> prepare("UPDATE produits SET nom=?, prix=?, stock=? WHERE id=? ");
-        return $stmt -> execute([$nom, $prix, $stock, $id]);
+    public static function edit(string $nom, float $prix, int $stock, $id)
+    {
+        $db = Database::getInstance()->getConnection();
+        // Mise à jour du produit dans la base de données
+        $stmt = $db->prepare('UPDATE produits SET nom = ?, prix = ?, stock = ? WHERE id = ?');
+        $stmt->execute([$nom, $prix, $stock, $id]);
     }
     /*public function supprimer(int $id){
         $stmt = $this ->pdo -> prepare("DELETE FROM produits WHERE id=?");
@@ -126,19 +129,12 @@ class Produit {
     }*/
 
     // Function Supprimer un produit
-    public function delete()
+    public static function delete($id)
     {
         // Requête préparée
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $stmt = $this->pdo->prepare('DELETE from produits where id = ?');
-            if ($stmt->execute([$id])) {
-                return true;
-            } else {
-                return false;
-            }
-
-        }
+        $pdo = Database::getInstance()->getConnection();
+        $stmt = $pdo->prepare('DELETE from produits where id = ?');
+        return $stmt->execute([$id]);
     }
 
 }

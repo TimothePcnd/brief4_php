@@ -31,5 +31,15 @@ class ProduitController {
         header("Location: index.php");
     }
 
+    public function delete($id) {
+        Produit::delete($id);
+        header("Location: index.php");
+    }
+
+    public function edit($id) {
+        Produit::edit($_POST['nom'], $_POST['prix'], $_POST['stock'], $id);
+        header("Location: index.php");
+    }
+
 
 }

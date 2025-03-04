@@ -17,7 +17,7 @@ require_once 'controllers/ProduitController.php';
 $action = isset($_GET['action']) ? $_GET['action'] : 'details';
 
 // Même chose avec l'id
-$id = isset($_GET['id']) ? intval($_GET['id']) : 1;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Instanciation du contrôleur
 $controller = new ProduitController();
@@ -37,6 +37,12 @@ switch ($action) {
         break;
     case 'ajouter':
         $controller->ajouter();
+        break;
+    case 'delete':
+        $controller->delete($id);
+        break;
+    case 'edit':
+        $controller->edit($id);
         break;
     default:
         // Si l'action n'existe pas
