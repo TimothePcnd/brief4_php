@@ -38,7 +38,7 @@ if (empty($produit)) {
     <?php endforeach; ?> <!--// Fin du foreach -->
     </tbody>
 </table>
-<button><a href="../views/add.php">Ajoutez !</a></button>
+<button><a href="../views/add.php">Ajoutez un produit</a></button>
 
 
 
